@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BETREX | Secure Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Orbitron:wght@400..900&family=Trade+Winds&display=swap');
+      
+      body {
+        font-family: 'Cairo', sans-serif;
+        background-color: #0a0a0c;
+        color: white;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      
+      #fallback-msg {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        z-index: 1;
+        color: #333;
+        background-color: #0a0a0c;
+      }
+      
+      #root {
+        min-height: 100vh;
+        z-index: 10;
+        background-color: #0a0a0c;
+      }
+      
+      /* Custom Animations for SplashScreen */
+      
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes zoom-in {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      
+      @keyframes slide-in-from-bottom {
+        from { transform: translateY(10px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      
+      @keyframes slide-in-from-top {
+        from { transform: translateY(-10px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      
+      .animate-in {
+        animation-duration: 600ms;
+        animation-fill-mode: both;
+      }
+      
+      .fade-in { animation-name: fade-in; }
+      
+      .zoom-in { animation-name: zoom-in; }
+      
+      .slide-in-from-bottom-4 { animation-name: slide-in-from-bottom; }
+      
+      .slide-in-from-top-4 { animation-name: slide-in-from-top; }
+      
+      /* Shimmer system */
+      
+      .skeleton-box {
+        position: relative;
+        overflow: hidden;
+        background-color: #1a1c1e;
+      }
+      
+      .skeleton-box::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.03),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+      
+      @keyframes shimmer {
+        100% {
+          transform: translateX(100%);
+        }
+      }
+      
+      /* Marquee Animation (Right to Left) */
+      
+      @keyframes marquee {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+      }
+      
+      .animate-marquee {
+        animation: marquee 20s linear infinite;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react/": "https://esm.sh/react@19.0.0/",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "firebase/app": "https://esm.sh/firebase@12.8.0/app",
+    "firebase/auth": "https://esm.sh/firebase@12.8.0/auth",
+    "firebase/database": "https://esm.sh/firebase@12.8.0/database",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "firebase/": "https://esm.sh/firebase@^12.8.0/",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "path": "https://esm.sh/path@^0.12.7",
+    "url": "https://esm.sh/url@^0.11.4",
+    "@firebase/app": "https://esm.sh/@firebase/app@^0.14.7",
+    "@firebase/auth": "https://esm.sh/@firebase/auth@^1.12.0",
+    "@firebase/database": "https://esm.sh/@firebase/database@^1.1.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="main.js"></script>
+</head>
+<body>
+    <div id="fallback-msg">
+      <p style="font-size: 10px; letter-spacing: 2px; color: #222; font-weight: 900;">BOOTING SYSTEM...</p>
+    </div>
+    <div id="root"></div>
+</body>
+</html>
